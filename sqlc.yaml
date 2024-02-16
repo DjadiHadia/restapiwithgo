@@ -1,0 +1,11 @@
+version: "1"
+
+packages:
+  - name: myapp
+    path: ./db/db
+    schema: ./db/db/migration
+    engine: postgres
+    tags: ['postgres']
+    
+
+output: ./db/db/sqlc
