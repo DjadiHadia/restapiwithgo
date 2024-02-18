@@ -2,8 +2,8 @@ package models
 
 import "gorm.io/gorm"
 
-type agency struct {
+type Fact struct {
 	gorm.Model
-	name   string `json:"name" gorm:"text;not null;default:null`
-	adress string `json:"adress" gorm:"text;not null;default:null`
+	Question string `json:"question" gorm:"text;not null;default:null`
+	Answer   string `json:"answer" gorm:"text;not null;default:null`
 }

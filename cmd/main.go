@@ -50,9 +50,7 @@ func main() {
 
 	app := fiber.New()
 
-	app.Get("/", func(c *fiber.Ctx) error {
-		return c.SendString("Hello, hadia!")
-	})
+	setupRoutes(app)
 
 	app.Listen(":3000")
 

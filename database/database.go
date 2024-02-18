@@ -43,4 +43,32 @@ func ConnectDb() {
 	DB = Dbinstance{
 		Db: db,
 	}
+	/*
+		// Query to retrieve table names from information_schema.tables
+		var tableNames []string
+		if err := db.Raw("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'").Pluck("table_name", &tableNames).Error; err != nil {
+			log.Fatal("Failed to retrieve table names:", err)
+		}
+
+		// Output the table names
+		log.Println("Tables in the database:")
+		for _, tableName := range tableNames {
+			log.Println(tableName)
+		}*/
+
+}
+
+// test queries
+// TestDB executes test queries
+func TestDB(db *gorm.DB) {
+	// Create an instance of the GORM migrator
+	migrator := db.Migrator()
+
+	// Retrieve table information using GORM's migrator
+	tables := migrator.CurrentDatabase()
+
+	log.Println("Tables in the database:")
+	for _, table := range tables {
+		log.Println(table)
+	}
 }
