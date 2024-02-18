@@ -5,18 +5,17 @@ package main
 import (
     "fmt"
     "github.com/gofiber/fiber/v2"
+    //"github.com/DjadiHadia/restapiwithgo/database"
+    //"database/sql"
+    
+
+    //_ "github.com/lib/pq"
    
 )
 
 func main() {
-    app := fiber.New()
-
-    app.Get("/", func(c *fiber.Ctx) error {
-        return c.SendString("Hello, hadia!")
-    })
-
-    app.Listen(":3000")
-    //database connexion
+    
+    //database connexion using gorm
     database.ConnectDb()
     
     myAgency := NewAgency()
@@ -54,7 +53,17 @@ func main() {
         //fmt.Println(client)
         fmt.Printf("%+v",client)
     }
-     
+   
+
+
+    app := fiber.New()
+
+    app.Get("/", func(c *fiber.Ctx) error {
+        return c.SendString("Hello, hadia!")
+    })
+
+    app.Listen(":3000")
+
 }
 
 
