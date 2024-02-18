@@ -1,8 +1,8 @@
 package handlers
 
 import (
-	"github.com/github.com/DjadiHadia/restapiwithgo/database"
-	"github.com/github.com/DjadiHadia/restapiwithgo/models"
+	"github.com/DjadiHadia/restapiwithgo/database"
+	"github.com/DjadiHadia/restapiwithgo/models"
 	"github.com/gofiber/fiber/v2"
 )
 
