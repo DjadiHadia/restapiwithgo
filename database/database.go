@@ -5,6 +5,7 @@ import (
 	"log"
 	"os"
 
+	"github.com/DjadiHadia/restapiwithgo/models"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
@@ -37,7 +38,7 @@ func ConnectDb() {
 	db.Logger = logger.Default.LogMode(logger.Info)
 
 	log.Println("running migrations")
-	db.AutoMigrate(&models.agency2{})
+	db.AutoMigrate(&models.Fact{})
 
 	DB = Dbinstance{
 		Db: db,
