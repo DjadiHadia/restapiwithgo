@@ -5,7 +5,6 @@ import (
 	"log"
 	"os"
 
-	"github.com/DjadiHadia/restapiwithgo/models"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
