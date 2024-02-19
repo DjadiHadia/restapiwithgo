@@ -41,6 +41,9 @@ func ConnectDb() {
 	log.Println("running migrations")
 	db.AutoMigrate(&models.Agency{})
 	db.AutoMigrate(&models.Car{})
+	db.AutoMigrate(&models.Person{})
+	db.AutoMigrate(&models.Client{})
+	db.AutoMigrate(&models.Reservation{})
 
 	DB = Dbinstance{
 		Db: db,
