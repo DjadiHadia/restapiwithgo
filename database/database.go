@@ -44,6 +44,7 @@ func ConnectDb() {
 	db.AutoMigrate(&models.Person{})
 	db.AutoMigrate(&models.Client{})
 	db.AutoMigrate(&models.Reservation{})
+	db.AutoMigrate(&models.User{})
 
 	DB = Dbinstance{
 		Db: db,
