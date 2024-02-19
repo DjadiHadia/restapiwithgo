@@ -15,9 +15,9 @@ type Fact struct {
 type Agency struct {
 	gorm.Model
 	Name    string `json:"name" gorm:"text;not null;default:null"`
-	Address string `json:"adress" gorm:"text;not null;default:null"`
+	Address string `json:"adress" gorm:"text;default:null"`
 	Phone   string `json:"phone" gorm:"text;not null;default:null"`
-	Email   string `json:"email" gorm:"text;not null;default:null"`
+	Email   string `json:"email" gorm:"text;default:null"`
 }
 
 type Car struct {
