@@ -12,4 +12,6 @@ func setupRoutes(app *fiber.App) {
 
 	app.Post("/fact", handlers.CreateFact)
 
+	// Add new route to show single Fact, given `:id`
+	app.Get("/fact/:id", handlers.ShowFact)
 }

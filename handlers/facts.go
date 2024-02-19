@@ -28,3 +28,12 @@ func ListFacts(c *fiber.Ctx) error {
 
 	return c.Status(200).JSON(facts)
 }
+func ShowFact(c *fiber.Ctx) error {
+	fact := models.Fact{}
+	id := c.Params("id")
+
+	database.DB.Db.Where("id = ?", id).First(&fact)
+
+	return c.Status(200).JSON(fact)
+
+}
