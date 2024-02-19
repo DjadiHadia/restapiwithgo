@@ -13,7 +13,7 @@ type Agency struct {
 	Name   string `json:"name" gorm:"text;not null;default:null"`
 	Adress string `json:"adress" gorm:"text;not null;default:null"`
 	Phone  string `json:"phone" gorm:"text;not null;default:null"`
-	email  string `json:"email" gorm:"text;not null;default:null"`
+	Email  string `json:"email" gorm:"text;not null;default:null"`
 }
 
 type Car struct {

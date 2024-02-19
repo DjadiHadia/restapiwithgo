@@ -35,7 +35,11 @@ func DeleteCar(c *fiber.Ctx) error {
 
 	result := database.DB.Db.Where("id = ?", id).Delete(&car)
 	if result.Error != nil {
-		return NotFound(c)
+
+		return c.Status(fiber.StatusNotFound).JSON(fiber.Map{
+			"message": "Car not found",
+		})
+
 	}
 
 	return ListFacts(c)
