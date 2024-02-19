@@ -56,3 +56,11 @@ type Reservation struct {
 	Client    Client    `gorm:"foreignkey:ClientID"` // Define the relationship
 	Car       Car       `gorm:"foreignkey:CarID"`    // Define the relationship
 }
+
+type User struct {
+	gorm.Model
+	ID       uint
+	Username string
+	Email    string
+	Password string
+}

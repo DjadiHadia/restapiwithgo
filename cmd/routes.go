@@ -19,6 +19,7 @@ func setupRoutes(app *fiber.App) {
 	app.Post("/agency", handlers.CreateAgency)
 
 	app.Get("/agency/:name", handlers.ShowagencyInfo)
+	app.Get("/agencies", handlers.ListAgencies)
 
 	//-----------------car routes----------------------
 	app.Get("/cars", handlers.ListCars)
@@ -29,6 +30,8 @@ func setupRoutes(app *fiber.App) {
 
 	app.Delete("/deletecar/:id", handlers.DeleteCar)
 
+	app.Put("/cars/:id", handlers.UpdateCar)
+
 	//-----------------client routes----------------------
 	app.Get("/clients", handlers.ListClients)
 
@@ -37,5 +40,8 @@ func setupRoutes(app *fiber.App) {
 	app.Get("/client/:id", handlers.ShowClientInfo)
 
 	app.Delete("/deleteclient/:id", handlers.DeleteClient)
+
+	//----------------user routes--------------------------
+	app.Post("/register", handlers.RegisterUser)
 
 }

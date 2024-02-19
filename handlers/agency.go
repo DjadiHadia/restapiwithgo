@@ -28,3 +28,12 @@ func ShowagencyInfo(c *fiber.Ctx) error {
 	return c.Status(200).JSON(agency)
 
 }
+
+func ListAgencies(c *fiber.Ctx) error {
+	agencies := []models.Agency{}
+
+	database.DB.Db.Find(&agencies)
+
+	return c.Status(200).JSON(agencies)
+
+}
