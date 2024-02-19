@@ -21,9 +21,9 @@ func CreateAgency(c *fiber.Ctx) error {
 
 func ShowagencyInfo(c *fiber.Ctx) error {
 	agency := models.Agency{}
-	id := c.Params("Name")
+	id := c.Params("id")
 
-	database.DB.Db.Where("Name = ?", id).First(&agency)
+	database.DB.Db.Where("id = ?", id).First(&agency)
 
 	return c.Status(200).JSON(agency)
 
