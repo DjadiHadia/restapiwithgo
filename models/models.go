@@ -34,14 +34,14 @@ type Person struct {
 	gorm.Model
 	Name    string `json:"name" gorm:"text;not null;default:null"`
 	Email   string `json:"email" gorm:"text;not null;default:null"`
-	Address string `json:"address" gorm:"text;not null;default:null"`
+	Address string `json:"address" gorm:"text;default:null"`
 	Phone   string `json:"phone" gorm:"text;not null;default:null"`
 }
 
 type Client struct {
 	gorm.Model
 	Person          // Embedding Person struct to achieve inheritance-like behavior
-	AgencyID uint   `json:"agency_id" gorm:"not null"`
+	AgencyID uint   `json:"agency_id" gorm:"default:null"`
 	Agency   Agency `gorm:"foreignkey:AgencyID"` // Define the relationship
 }
 
