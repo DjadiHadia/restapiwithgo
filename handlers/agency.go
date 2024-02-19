@@ -20,7 +20,7 @@ func CreateAgency(c *fiber.Ctx) error {
 }
 
 func ShowagencyInfo(c *fiber.Ctx) error {
-	agency := models.Fact{}
+	agency := models.Agency{}
 	id := c.Params("Name")
 
 	database.DB.Db.Where("Name = ?", id).First(&agency)

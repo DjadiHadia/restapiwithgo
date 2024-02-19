@@ -42,7 +42,7 @@ func DeleteCar(c *fiber.Ctx) error {
 
 	}
 
-	return ListFacts(c)
+	return ListCars(c)
 }
 
 func ListCars(c *fiber.Ctx) error {

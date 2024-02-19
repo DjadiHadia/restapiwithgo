@@ -26,5 +26,6 @@ func setupRoutes(app *fiber.App) {
 
 	app.Get("/car/:id", handlers.ShowCarInfo)
 
-	app.Get("/deletecar/:id", handlers.DeleteCar)
+	app.Delete("/deletecar/:id", handlers.DeleteCar)
+
 }
