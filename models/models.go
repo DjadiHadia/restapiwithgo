@@ -41,7 +41,7 @@ type Person struct {
 type Client struct {
 	gorm.Model
 	Person          // Embedding Person struct to achieve inheritance-like behavior
-	AgencyID uint   // Foreign key reference to Agency
+	AgencyID uint   `json:"agency_id" gorm:"not null"`
 	Agency   Agency `gorm:"foreignkey:AgencyID"` // Define the relationship
 }
 
