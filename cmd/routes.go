@@ -9,7 +9,14 @@ import (
 
 func setupRoutes(app *fiber.App) {
 	// Apply authentication middleware to all routes
-	app.Use(handlers.AuthMiddleware)
+
+	// Apply authentication middleware to all routes except /login
+	app.Use(func(c *fiber.Ctx) error {
+		if c.Path() == "/login" || c.Path() == "/register" {
+			return c.Next()
+		}
+		return handlers.AuthMiddleware(c)
+	})
 	app.Get("/", handlers.ListFacts)
 
 	app.Post("/fact", handlers.CreateFact)
