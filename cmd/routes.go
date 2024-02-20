@@ -8,6 +8,8 @@ import (
 )
 
 func setupRoutes(app *fiber.App) {
+	// Apply authentication middleware to all routes
+	app.Use(handlers.AuthMiddleware)
 	app.Get("/", handlers.ListFacts)
 
 	app.Post("/fact", handlers.CreateFact)
@@ -43,5 +45,7 @@ func setupRoutes(app *fiber.App) {
 
 	//----------------user routes--------------------------
 	app.Post("/register", handlers.RegisterUser)
+
+	app.Post("/login", handlers.LoginUser)
 
 }
