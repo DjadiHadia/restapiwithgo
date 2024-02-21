@@ -20,13 +20,20 @@ func CreateAgency(c *fiber.Ctx) error {
 }
 
 func ShowagencyInfo(c *fiber.Ctx) error {
-	agency := models.Agency{}
+	// Retrieve agency ID from request parameters
 	id := c.Params("id")
 
-	database.DB.Db.Where("id = ?", id).First(&agency)
+	// Fetch agency from the database including its associated cars
+	var agency models.Agency
+	if err := database.DB.Db.Preload("Cars").Where("id = ?", id).First(&agency).Error; err != nil {
+		// Handle error if agency not found or any other database error
+		return c.Status(fiber.StatusNotFound).JSON(fiber.Map{
+			"message": "Agency not found",
+		})
+	}
 
-	return c.Status(200).JSON(agency)
-
+	// Return agency data along with associated cars
+	return c.Status(fiber.StatusOK).JSON(agency)
 }
 
 func ListAgencies(c *fiber.Ctx) error {

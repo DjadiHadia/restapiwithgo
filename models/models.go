@@ -18,6 +18,7 @@ type Agency struct {
 	Address string `json:"adress" gorm:"text;default:null"`
 	Phone   string `json:"phone" gorm:"text;not null;default:null"`
 	Email   string `json:"email" gorm:"text;default:null"`
+	Cars    []Car
 }
 
 type Car struct {
@@ -26,8 +27,7 @@ type Car struct {
 	Brand               string `json:"brand" gorm:"text;not null;default:null"`
 	Color               string `json:"color" gorm:"text;not null;default:null"`
 	Year                string `json:"year" gorm:"text;not null;default:null"`
-	AgencyID            uint   `json:"agency_id" gorm:"default:null"` // Foreign key reference to Agency
-	Agency              Agency `gorm:"foreignKey:AgencyID"`           // Define the relationship
+	AgencyID            uint   `json:"agency_id" gorm:"default:null"`
 }
 
 type Person struct {
