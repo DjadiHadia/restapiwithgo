@@ -14,11 +14,13 @@ type Fact struct {
 
 type Agency struct {
 	gorm.Model
-	Name    string `json:"name" gorm:"text;not null;default:null"`
-	Address string `json:"adress" gorm:"text;default:null"`
-	Phone   string `json:"phone" gorm:"text;not null;default:null"`
-	Email   string `json:"email" gorm:"text;default:null"`
-	Cars    []Car
+	Name      string `json:"name" gorm:"text;not null;default:null"`
+	Address   string `json:"adress" gorm:"text;default:null"`
+	Phone     string `json:"phone" gorm:"text;not null;default:null"`
+	Email     string `json:"email" gorm:"text;default:null"`
+	Cars      []Car
+	Clients   []Client
+	Employees []Employee
 }
 
 type Car struct {
@@ -42,19 +44,51 @@ type Client struct {
 	gorm.Model
 	Person          // Embedding Person struct to achieve inheritance-like behavior
 	AgencyID uint   `json:"agency_id" gorm:"default:null"`
-	Agency   Agency `gorm:"foreignkey:AgencyID"` // Define the relationship
+	Agency   Agency `gorm:"foreignkey:AgencyID"`
+}
+
+type Employee struct {
+	gorm.Model
+	Person          // Embedding Person struct to achieve inheritance-like behavior
+	Salary   string `json:"salary" gorm:"text;null;default:null"`
+	AgencyID uint   `json:"agency_id" gorm:"default:null"`
+	Agency   Agency `gorm:"foreignkey:AgencyID"`
 }
 
 type Reservation struct {
 	gorm.Model
-	Date      time.Time `json:"date" gorm:"type:date;not null"`
-	Duration  int       `json:"duration" gorm:"not null"`
-	StartDate time.Time `json:"start_date" gorm:"type:date;not null"`
-	EndDate   time.Time `json:"end_date" gorm:"type:date;not null"`
-	ClientID  uint      `json:"client_id" gorm:"default:null"`
-	CarID     uint      `json:"car_id" gorm:"default:null"`
-	Client    Client    `gorm:"foreignkey:ClientID"` // Define the relationship
-	Car       Car       `gorm:"foreignkey:CarID"`    // Define the relationship
+	Date       time.Time `json:"date" gorm:"type:date;not null"`
+	Duration   int       `json:"duration" gorm:"not null"`
+	StartDate  time.Time `json:"start_date" gorm:"type:date;not null"`
+	EndDate    time.Time `json:"end_date" gorm:"type:date;not null"`
+	ClientID   uint      `json:"client_id" gorm:"default:null"`
+	CarID      uint      `json:"car_id" gorm:"default:null"`
+	Client     Client    `gorm:"foreignkey:ClientID"`
+	Car        Car       `gorm:"foreignkey:CarID"`
+	ContractID uint      `json:"contract_id" gorm:"default:null"`
+	Contract   Contract  `gorm:"foreignkey:ContractID"`
+}
+
+type Contract struct {
+	gorm.Model
+	Date         time.Time `json:"date" gorm:"type:date;not null"`
+	Duration     int       `json:"duration" gorm:"not null"`
+	StartDate    time.Time `json:"start_date" gorm:"type:date;not null"`
+	EndDate      time.Time `json:"end_date" gorm:"type:date;not null"`
+	TotalPrice   float64   `json:"totalprice" gorm:"not null"`
+	ClientID     uint      `json:"client_id" gorm:"default:null"`
+	Client       Client    `gorm:"foreignkey:ClientID"`
+	Reservations []Reservation
+}
+
+type Bill struct {
+	gorm.Model
+	Date       time.Time `json:"date" gorm:"type:date;not null"`
+	Duration   int       `json:"duration" gorm:"not null"`
+	TotalPrice float64   `json:"totalprice" gorm:"not null"`
+	ClientID   uint      `json:"client_id" gorm:"default:null"`
+	Client     Client    `gorm:"foreignkey:ClientID"`
+	Contracts  []Contract
 }
 
 type User struct {

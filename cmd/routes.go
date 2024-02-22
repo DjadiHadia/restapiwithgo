@@ -27,7 +27,7 @@ func setupRoutes(app *fiber.App) {
 	//-----------------agency routes----------------------
 	app.Post("/agency", handlers.CreateAgency)
 
-	app.Get("/agency/:name", handlers.ShowagencyInfo)
+	app.Get("/agency/:id", handlers.ShowagencyInfo)
 	app.Get("/agencies", handlers.ListAgencies)
 
 	//-----------------car routes----------------------
