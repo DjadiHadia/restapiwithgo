@@ -49,6 +49,14 @@ func setupRoutes(app *fiber.App) {
 	app.Get("/client/:id", handlers.ShowClientInfo)
 
 	app.Delete("/deleteclient/:id", handlers.DeleteClient)
+	//-----------------reservation routes----------------------
+	app.Get("/reservations", handlers.ListReservations)
+
+	app.Post("/reservation", handlers.CreateReservation)
+
+	app.Get("/reservation/:id", handlers.Showreservation)
+
+	app.Delete("/deletereservation/:id", handlers.CancelReservation)
 
 	//----------------user routes--------------------------
 	app.Post("/register", handlers.RegisterUser)
