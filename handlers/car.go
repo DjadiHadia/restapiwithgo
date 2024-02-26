@@ -98,21 +98,21 @@ func UpdateCar(c *fiber.Ctx) error {
 	}
 
 	// Update the existing car with the new values from the request body
-	if car.Registration_number != "" {
+	if car.Registration_number != "" && car.Registration_number != existingCar.Registration_number {
 		existingCar.Registration_number = car.Registration_number
 	}
-	if car.Brand != "" {
+	if car.Brand != "" && car.Brand != existingCar.Brand {
 		existingCar.Brand = car.Brand
 	}
-	if car.Color != "" {
+	if car.Color != "" && car.Color != existingCar.Color {
 		existingCar.Color = car.Color
 	}
-	if car.Year != "" {
+	if car.Year != "" && car.Year != existingCar.Year {
 		existingCar.Year = car.Year
 	}
 
 	// If the agency_id is provided in the request body and not null, update it
-	if car.AgencyID != 0 {
+	if car.AgencyID != 0 && car.AgencyID != existingCar.AgencyID {
 		existingCar.AgencyID = car.AgencyID
 	}
 
