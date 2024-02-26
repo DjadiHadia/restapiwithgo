@@ -33,11 +33,11 @@ func setupRoutes(app *fiber.App) {
 	//-----------------car routes----------------------
 	app.Get("/cars", handlers.ListCars)
 
-	app.Post("/car", handlers.AddCar)
+	app.Post("/cars", handlers.AddCar)
 
-	app.Get("/car/:id", handlers.ShowCarInfo)
+	app.Get("/cars/:id", handlers.ShowCarInfo)
 
-	app.Delete("/deletecar/:id", handlers.DeleteCar)
+	app.Delete("/cars/:id", handlers.DeleteCar)
 
 	app.Put("/cars/:id", handlers.UpdateCar)
 

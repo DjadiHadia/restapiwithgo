@@ -9,7 +9,7 @@ services:
       - "3000:3000"
     volumes:
       - .:/home/hadia/myproject/RentalCar
-    command: go run cmd/main.go cmd/Agency.go cmd/Client.go cmd/Car.go cmd/reservation.go cmd/routes.go -b 0.0.0.0
+    command: go run cmd/main.go cmd/Agency.go cmd/Client.go cmd/Car.go cmd/routes.go -b 0.0.0.0
   db:
     image: postgres:alpine
     

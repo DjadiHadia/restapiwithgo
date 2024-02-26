@@ -1,8 +1,6 @@
 package main
 
 import (
-	"fmt"
-
 	"github.com/DjadiHadia/restapiwithgo/database"
 	"github.com/gofiber/fiber/v2"
 	//"database/sql"
@@ -14,7 +12,7 @@ func main() {
 	//database connexion using gorm
 	database.ConnectDb()
 
-	myAgency := NewAgency()
+	/*myAgency := NewAgency()
 	GetInfo(myAgency)
 	myAgency.UpdatePhone("00213777777")
 	GetInfo(myAgency)
@@ -46,7 +44,7 @@ func main() {
 
 		//fmt.Println(client)
 		fmt.Printf("%+v", client)
-	}
+	}*/
 
 	app := fiber.New()
 
