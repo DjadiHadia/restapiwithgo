@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rental-car-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rental-car
+      tier: db
+  template:
+    metadata:
+      labels:
+        app: rental-car
+        tier: db
+    spec:
+      containers:
+      - name: rental-car-db
+        image: postgres:alpine
+        ports:
+        - containerPort: 5432
+        env:
+        - name: POSTGRES_USER
+          value: root
+        - name: POSTGRES_PASSWORD
+          value: secret
+        - name: POSTGRES_DB
+          value: postres12
+        resources:
+          limits:
+            cpu: "0.5"
+            memory: "512Mi"
+          requests:
+            cpu: "0.25"
+            memory: "256Mi"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rental-car-db
+spec:
+  selector:
+    app: rental-car
+    tier: db
+  ports:
+  - protocol: TCP
+    port: 5432

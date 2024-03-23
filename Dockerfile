@@ -1,8 +1,11 @@
 FROM golang:1.19.0
 
-WORKDIR /home/hadia/myproject/RentalCar
-
-RUN go install github.com/cosmtrek/air@latest
+WORKDIR /app
 
 COPY . .
-RUN go mod tidy
+
+RUN go mod download
+
+RUN go build -o main ./cmd 
+
+CMD ["./main"]

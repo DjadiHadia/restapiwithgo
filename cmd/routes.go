@@ -17,17 +17,17 @@ func setupRoutes(app *fiber.App) {
 		}
 		return handlers.AuthMiddleware(c)
 	})
-	app.Get("/", handlers.ListFacts)
+	//app.Get("/", handlers.ListFacts)
 
-	app.Post("/fact", handlers.CreateFact)
+	//app.Post("/fact", handlers.CreateFact)
 
 	// Add new route to show single Fact, given `:id`
-	app.Get("/fact/:id", handlers.ShowFact)
+	//app.Get("/fact/:id", handlers.ShowFact)
 
 	//-----------------agency routes----------------------
-	app.Post("/agency", handlers.CreateAgency)
+	app.Post("/agencies", handlers.CreateAgency)
 
-	app.Get("/agency/:id", handlers.ShowagencyInfo)
+	app.Get("/agencies/:id", handlers.ShowagencyInfo)
 	app.Get("/agencies", handlers.ListAgencies)
 
 	//-----------------car routes----------------------
@@ -44,19 +44,19 @@ func setupRoutes(app *fiber.App) {
 	//-----------------client routes----------------------
 	app.Get("/clients", handlers.ListClients)
 
-	app.Post("/client", handlers.AddClient)
+	app.Post("/clients", handlers.AddClient)
 
-	app.Get("/client/:id", handlers.ShowClientInfo)
+	app.Get("/clients/:id", handlers.ShowClientInfo)
 
-	app.Delete("/deleteclient/:id", handlers.DeleteClient)
+	app.Delete("/clients/:id", handlers.DeleteClient)
 	//-----------------reservation routes----------------------
 	app.Get("/reservations", handlers.ListReservations)
 
-	app.Post("/reservation", handlers.CreateReservation)
+	app.Post("/reservations", handlers.CreateReservation)
 
-	app.Get("/reservation/:id", handlers.Showreservation)
+	app.Get("/reservations/:id", handlers.Showreservation)
 
-	app.Delete("/deletereservation/:id", handlers.CancelReservation)
+	app.Delete("/deletereservations/:id", handlers.CancelReservation)
 
 	//----------------user routes--------------------------
 	app.Post("/register", handlers.RegisterUser)
