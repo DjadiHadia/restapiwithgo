@@ -17,12 +17,10 @@ func setupRoutes(app *fiber.App) {
 		}
 		return handlers.AuthMiddleware(c)
 	})
-	//app.Get("/", handlers.ListFacts)
 
-	//app.Post("/fact", handlers.CreateFact)
-
-	// Add new route to show single Fact, given `:id`
-	//app.Get("/fact/:id", handlers.ShowFact)
+	app.Get("/", func(c *fiber.Ctx) error {
+		return c.SendString("Welcome to Hadia!")
+	})
 
 	//-----------------agency routes----------------------
 	app.Post("/agencies", handlers.CreateAgency)

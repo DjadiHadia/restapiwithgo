@@ -1,7 +1,5 @@
-# This is a basic example Blueprint for a Django web service and
-# the PostgreSQL database it connects to.
 services:
-  - type: web # A Python web service named django-app running on a free instance
+  - type: web 
     plan: free
     name: go-app
     runtime: docker
@@ -15,5 +13,5 @@ services:
           property: connectionString
 
 databases:
-  - name: db-service # A PostgreSQL database named django-app-db running on a free instance
+  - name: db-service 
     plan: free
