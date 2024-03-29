@@ -43,7 +43,10 @@ func ShowCarInfo(c *fiber.Ctx) error {
 		})
 	}
 
-	return c.Status(fiber.StatusOK).JSON(car)
+	return c.Status(fiber.StatusOK).JSON(fiber.Map{
+
+		"message": "car added success!!!",
+	})
 }
 
 func DeleteCar(c *fiber.Ctx) error {
