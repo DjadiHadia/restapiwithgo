@@ -1,0 +1,19 @@
+# This is a basic example Blueprint for a Django web service and
+# the PostgreSQL database it connects to.
+services:
+  - type: web # A Python web service named django-app running on a free instance
+    plan: free
+    name: go-app
+    runtime: docker
+    repo: https://github.com/DjadiHadia/restapiwithgo.git
+    buildCommand: "go run cmd/main.go cmd/Agency.go cmd/Client.go cmd/Car.go cmd/routes.go -b 0.0.0.0"
+    dockerfilePath: web.dockerfile
+    envVars:
+      - key: postgres://root:kCQKbBjtLZUwWmK83IaHBxHzvAALNsFM@dpg-cnvk9hun7f5s7395p5u0-a/postres12
+        fromDatabase:
+          name: db-service
+          property: connectionString
+
+databases:
+  - name: db-service # A PostgreSQL database named django-app-db running on a free instance
+    plan: free
